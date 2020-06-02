@@ -4,6 +4,10 @@
   "description": "Axios hooks for fetching data.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sonyzach/usfm-validator.git"
+  },
   "scripts": {
     "build": "tsc"
   },
@@ -19,7 +23,9 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
-    "axios": "^0.19.2",
     "react": "^16.13.1"
+  },
+  "peerDependencies": {
+    "axios": ">= 0.0.0"
   }
 }
