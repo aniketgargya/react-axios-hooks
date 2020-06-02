@@ -1,0 +1,25 @@
+{
+  "name": "@aniketgargya/axios-hooks",
+  "version": "1.0.2",
+  "description": "Axios hooks for fetching data.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "react",
+    "axios",
+    "hooks"
+  ],
+  "author": "Aniket Gargya <gargya.aniket@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^16.9.35",
+    "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "react": "^16.13.1"
+  }
+}
