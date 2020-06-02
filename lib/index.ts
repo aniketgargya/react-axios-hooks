@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
 export const useAxios = (config: AxiosRequestConfig) => {
-    const [data, setData] = useState<AxiosResponse<any> | null>(null);
+    const [response, setResponse] = useState<AxiosResponse<any> | null>(null);
     const [error, setError] = useState<null | any>(null);
     useEffect(() => {
         axios(config)
-            .then(response => {
-                setData(response);
+            .then(data => {
+                setResponse(data);
             })
             .catch(err => {
                 setError(err);
@@ -15,8 +15,8 @@ export const useAxios = (config: AxiosRequestConfig) => {
     }, []);
 
     return {
-        loading: data ? true : false,
-        data,
+        loading: response ? true : false,
+        response,
         error
     };
 };

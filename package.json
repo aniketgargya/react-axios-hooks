@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sonyzach/usfm-validator.git"
+    "url": "https://github.com/aniketgargya/axios-hooks.git"
   },
   "scripts": {
     "build": "tsc"
