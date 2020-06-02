@@ -1,6 +1,6 @@
 {
   "name": "@aniketgargya/axios-hooks",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Axios hooks for fetching data.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
