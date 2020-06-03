@@ -26,12 +26,12 @@ export const useAxios = (config: AxiosRequestConfig) => {
     };
 };
 
-export const useLazyAxios = (config: AxiosRequestConfig): [() => void, { loading: boolean; response: AxiosResponse<any> | null; error: any; }] => {
+export const useLazyAxios = (): [(config: AxiosRequestConfig) => void, { loading: boolean; response: AxiosResponse<any> | null; error: any; }] => {
     const [response, setResponse] = useState<AxiosResponse<any> | null>(null);
     const [error, setError] = useState<null | any>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
-    const sendRequest = (): void => {
+    const sendRequest = (config: AxiosRequestConfig): void => {
         setLoading(true);
         axios(config)
             .then(data => {
