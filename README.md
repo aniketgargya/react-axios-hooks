@@ -21,12 +21,12 @@ or
 // Request sent when sendRequest() is called
 const [sendRequest, { response, loading, error }] = useLazyAxios();
 
-handleClick = () => {
+const handleClick = () => {
     sendRequest({
         url: "https://yourapi.com/path/data.json",
         method: "GET"
     });
-}
+};
 ```
 
 To install:
