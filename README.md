@@ -1,12 +1,12 @@
-# Axios Hooks for React
+# React Axios Hooks
 
-[![npm version](http://img.shields.io/npm/v/@aniketgargya/axios-hooks.svg?style=flat)](https://npmjs.org/package/@aniketgargya/axios-hooks "View this project on npm")
+[![npm version](http://img.shields.io/npm/v/react-axios-hooks.svg?style=flat)](https://npmjs.org/package/react-axios-hooks "View this project on npm")
 
 This npm package includes a hook for fetching data with ```axios```. You can use it with the exact same configurations as ```axios```.
 
 To import:
-```
-import { useAxios, useLazyAxios } from "@aniketgargya/axios-hooks";
+```javascript
+import { useAxios, useLazyAxios } from "react-axios-hooks";
 ```
 
 ```javascript
@@ -31,7 +31,7 @@ handleClick = () => {
 
 To install:
 ```
-npm install axios @aniketgargya/axios-hooks
+npm install axios react-axios-hooks
 ```
 
 Type definitions are provided!
