@@ -1,12 +1,12 @@
 {
-  "name": "@aniketgargya/axios-hooks",
-  "version": "2.0.0",
-  "description": "Axios hooks for fetching data.",
+  "name": "react-axios-hooks",
+  "version": "1.0.0",
+  "description": "React hooks for fetching data built with axios",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aniketgargya/axios-hooks.git"
+    "url": "https://github.com/aniketgargya/react-axios-hooks.git"
   },
   "scripts": {
     "build": "tsc",
@@ -25,7 +25,7 @@
     "typescript": "^3.9.3"
   },
   "peerDependencies": {
-    "axios": ">= 0.0.0",
+    "axios": ">= 0.0.1",
     "react": ">= 16.8"
   }
 }
