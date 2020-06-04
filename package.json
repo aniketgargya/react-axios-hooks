@@ -1,6 +1,6 @@
 {
   "name": "react-axios-hooks",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "React hooks for fetching data built with axios",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
