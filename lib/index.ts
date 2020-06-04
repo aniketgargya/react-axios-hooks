@@ -1,22 +1,27 @@
 import { useState, useEffect, useRef } from "react";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import { isEqual } from 'lodash';
 
 export const useAxios = (config: AxiosRequestConfig) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [response, setResponse] = useState<AxiosResponse<any> | null>(null);
     const [error, setError] = useState<null | any>(null);
+    const previousConfig = useRef<AxiosRequestConfig | null>(null);
 
     useEffect(() => {
-        setLoading(true);
-        axios(config)
-            .then(data => {
-                setLoading(false);
-                setResponse(data);
-            })
-            .catch(err => {
-                setLoading(false);
-                setError(err);
-            });
+        if (!isEqual(config, previousConfig.current)) {
+            previousConfig.current = config;
+            setLoading(true);
+            axios(config)
+                .then(data => {
+                    setLoading(false);
+                    setResponse(data);
+                })
+                .catch(err => {
+                    setLoading(false);
+                    setError(err);
+                });
+        }
     }, [config]);
 
     return {
@@ -53,3 +58,5 @@ export const useLazyAxios = (): [(config: AxiosRequestConfig) => void, { loading
         }
     ];
 };
+
+export type { AxiosRequestConfig };
