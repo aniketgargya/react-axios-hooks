@@ -1,62 +1,77 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-import { isEqual } from 'lodash';
+import useDeepCompareEffect from 'use-deep-compare-effect';
+
+interface IState {
+    loading: boolean;
+    response: AxiosResponse<any> | null;
+    error: null | any;
+};
 
 export const useAxios = (config: AxiosRequestConfig) => {
-    const [loading, setLoading] = useState<boolean>(false);
-    const [response, setResponse] = useState<AxiosResponse<any> | null>(null);
-    const [error, setError] = useState<null | any>(null);
-    const previousConfig = useRef<AxiosRequestConfig | null>(null);
+    const [state, setState] = useState<IState>({
+        loading: false,
+        response: null,
+        error: null
+    });
 
-    useEffect(() => {
-        if (!isEqual(config, previousConfig.current)) {
-            previousConfig.current = config;
-            setLoading(true);
-            axios(config)
-                .then(data => {
-                    setLoading(false);
-                    setResponse(data);
-                })
-                .catch(err => {
-                    setLoading(false);
-                    setError(err);
+    useDeepCompareEffect(() => {
+        setState({
+            ...state,
+            loading: true
+        });
+
+        axios(config)
+            .then(data => {
+                setState({
+                    ...state,
+                    loading: false,
+                    response: data
                 });
-        }
+            })
+            .catch(err => {
+                setState({
+                    ...state,
+                    loading: false,
+                    error: err
+                })
+            });
     }, [config]);
 
-    return {
-        loading,
-        response,
-        error
-    };
+    return state;
 };
 
 export const useLazyAxios = (): [(config: AxiosRequestConfig) => void, { loading: boolean; response: AxiosResponse<any> | null; error: any; }] => {
-    const [response, setResponse] = useState<AxiosResponse<any> | null>(null);
-    const [error, setError] = useState<null | any>(null);
-    const [loading, setLoading] = useState<boolean>(false);
+    const [state, setState] = useState<IState>({
+        loading: false,
+        response: null,
+        error: null
+    });
 
     const sendRequest = (config: AxiosRequestConfig): void => {
-        setLoading(true);
+        setState({
+            ...state,
+            loading: true
+        });
+
         axios(config)
             .then(data => {
-                setLoading(false);
-                setResponse(data);
+                setState({
+                    ...state,
+                    loading: false,
+                    response: data
+                })
             })
             .catch(err => {
-                setLoading(false);
-                setError(err);
+                setState({
+                    ...state,
+                    loading: false,
+                    error: err
+                })
             });
     };
 
-    return [
-        sendRequest,
-        {
-            loading,
-            response,
-            error
-        }
-    ];
+    return [sendRequest, state];
 };
 
-export type { AxiosRequestConfig };
+export type { AxiosRequestConfig, AxiosResponse };
