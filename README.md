@@ -1,6 +1,7 @@
 # React Axios Hooks
 
 [![npm version](http://img.shields.io/npm/v/react-axios-hooks.svg?style=flat)](https://npmjs.org/package/react-axios-hooks "View this project on npm")
+[![Build Status](https://travis-ci.com/aniketgargya/react-axios-hooks.svg?branch=master)](https://travis-ci.com/aniketgargya/react-axios-hooks)
 
 This npm package includes a hook for fetching data with ```axios```. You can use it with the exact same configurations as ```axios```.
 
