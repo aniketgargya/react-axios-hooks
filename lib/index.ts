@@ -17,22 +17,23 @@ export const useAxios = (config: AxiosRequestConfig): IState => {
 
     useDeepCompareEffect(() => {
         setState({
-            ...state,
-            loading: true
+            loading: true,
+            response: null,
+            error: null
         });
 
         axios(config)
             .then(data => {
                 setState({
-                    ...state,
                     loading: false,
-                    response: data
+                    response: data,
+                    error: null
                 });
             })
             .catch(err => {
                 setState({
-                    ...state,
                     loading: false,
+                    response: null,
                     error: err
                 })
             });
@@ -50,22 +51,23 @@ export const useLazyAxios = (): [(config: AxiosRequestConfig) => void, IState] =
 
     const sendRequest = (config: AxiosRequestConfig): void => {
         setState({
-            ...state,
-            loading: true
+            loading: true,
+            response: null,
+            error: null
         });
 
         axios(config)
             .then(data => {
                 setState({
-                    ...state,
                     loading: false,
-                    response: data
+                    response: data,
+                    error: null
                 })
             })
             .catch(err => {
                 setState({
-                    ...state,
                     loading: false,
+                    response: null,
                     error: err
                 })
             });
