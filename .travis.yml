@@ -1,0 +1,17 @@
+language: node_js 
+node_js:
+    - "10"
+    - "11"
+    - "12"
+    - "13"
+    - "14"
+
+before_deploy:
+    - npm run build
+
+deploy:
+    edge: true
+    provider: npm
+    email: "$NPM_EMAIL"
+    api_key: "$NPM_TOKEN"
+    cleanup: true

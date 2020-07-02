@@ -9,8 +9,7 @@
     "url": "https://github.com/aniketgargya/react-axios-hooks.git"
   },
   "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "build": "tsc"
   },
   "keywords": [
     "react",
