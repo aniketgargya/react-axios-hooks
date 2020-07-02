@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-import useDeepCompareEffect from 'use-deep-compare-effect';
+import useDeepCompareEffect from "use-deep-compare-effect";
 
 interface IState {
     loading: boolean;
@@ -8,7 +8,7 @@ interface IState {
     error: null | any;
 };
 
-export const useAxios = (config: AxiosRequestConfig) => {
+export const useAxios = (config: AxiosRequestConfig): IState => {
     const [state, setState] = useState<IState>({
         loading: false,
         response: null,
@@ -41,7 +41,7 @@ export const useAxios = (config: AxiosRequestConfig) => {
     return state;
 };
 
-export const useLazyAxios = (): [(config: AxiosRequestConfig) => void, { loading: boolean; response: AxiosResponse<any> | null; error: any; }] => {
+export const useLazyAxios = (): [(config: AxiosRequestConfig) => void, IState] => {
     const [state, setState] = useState<IState>({
         loading: false,
         response: null,
